@@ -58,7 +58,7 @@ namespace Assignment4_Nov17.myadmim
         {
 
         }
-
+     
         protected void MemberCreateBtn_Click(object sender, EventArgs e)
         {
             string conn = ConnectionString.conn;
@@ -76,11 +76,15 @@ namespace Assignment4_Nov17.myadmim
                 dbcon.NetUsers.InsertOnSubmit(newuser);
                 try
                 {
+                  
                     dbcon.SubmitChanges();
-                    newuser = (from x in dbcon.NetUsers
+                    NetUser newuser2 = (from x in dbcon.NetUsers
                                where (x.UserName == usernameTextBox.Text)
                                select x).First();
-                    newmember.Member_UserID = newuser.UserID;
+
+                    HttpContext.Current.Session["memberID"] = newuser2.UserID;
+
+                    newmember.Member_UserID = newuser2.UserID;
                     newmember.MemberFirstName = MemberFirstNameTxt.Text;
                     newmember.MemberLastName = MemberLastNameTxt.Text;
                     newmember.MemberPhoneNumber = MemberPhoneTxt.Text;
@@ -176,7 +180,7 @@ namespace Assignment4_Nov17.myadmim
 
         protected void sectionBtn_Click(object sender, EventArgs e)
         {
-
+            
             string conn = ConnectionString.conn;
 
             dbcon = new KarateDataContext(conn);
@@ -184,8 +188,8 @@ namespace Assignment4_Nov17.myadmim
             Section NewSection = new Section();
             NewSection.SectionName = sectionNameDrpDwn.SelectedValue.ToString();
             NewSection.SectionStartDate = DateTime.Now;
-            NewSection.Member_ID = Convert.ToInt32(MemberIdTextBox.Text);
-            NewSection.Instructor_ID = Convert.ToInt32(InstructorIdTextBox.Text);
+            NewSection.Member_ID = Convert.ToInt32(MemberIdDropDownList.SelectedValue.ToString());
+            NewSection.Instructor_ID = Convert.ToInt32(InstDropDownList.SelectedValue.ToString());
             NewSection.SectionFee = Convert.ToDecimal(sectionFeeTxt.Text);
 
             dbcon.Sections.InsertOnSubmit(NewSection);

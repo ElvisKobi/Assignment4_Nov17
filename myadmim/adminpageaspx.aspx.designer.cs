@@ -195,13 +195,13 @@ namespace Assignment4_Nov17.myadmim
         protected global::System.Web.UI.WebControls.Label errorlbl;
 
         /// <summary>
-        /// MemberIdTextBox control.
+        /// MemberIdDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MemberIdTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList MemberIdDropDownList;
 
         /// <summary>
         /// SqlDataSource3 control.
@@ -213,13 +213,13 @@ namespace Assignment4_Nov17.myadmim
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
 
         /// <summary>
-        /// InstructorIdTextBox control.
+        /// InstDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox InstructorIdTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList InstDropDownList;
 
         /// <summary>
         /// SqlDataSource4 control.

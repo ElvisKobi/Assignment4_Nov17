@@ -92,13 +92,16 @@
 </span>
     <br />
 <p>
-    Member ID:&nbsp;&nbsp;<asp:TextBox ID="MemberIdTextBox" runat="server"></asp:TextBox>
-&nbsp;<asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KarateSchoolConnectionString %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
+    Member ID:&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="MemberIdDropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="MemberFirstName" DataValueField="Member_UserID">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KarateSchoolConnectionString %>" SelectCommand="SELECT [Member_UserID], [MemberFirstName] FROM [Member]"></asp:SqlDataSource>
+&nbsp;
 </p>
 <p>
     Instructor ID:&nbsp;
-    <asp:TextBox ID="InstructorIdTextBox" runat="server"></asp:TextBox>
-    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:KarateSchoolConnectionString %>" SelectCommand="SELECT * FROM [Instructor]"></asp:SqlDataSource>
+    <asp:DropDownList ID="InstDropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="InstructorFirstName" DataValueField="InstructorID">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:KarateSchoolConnectionString %>" SelectCommand="SELECT [InstructorID], [InstructorFirstName] FROM [Instructor]"></asp:SqlDataSource>
 </p>
 <p>
     Section Name:&nbsp;
