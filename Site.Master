@@ -45,15 +45,10 @@
         </asp:ScriptManager>
 
         <nav class="auto-style1">
-            <div class="container ">
-                Karate School<div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Logon.aspx">LogIn</a></li>
-                        
-                    </ul>
+            <div class="container text-bg-primary">
+                Karate School<a class="nav-link" runat="server" href="~/Logon.aspx">LogIn</a><br />
                 </div>
-            </div>
-        </nav>
+&nbsp;</nav>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

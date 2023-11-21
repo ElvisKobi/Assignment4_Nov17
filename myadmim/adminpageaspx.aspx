@@ -87,12 +87,10 @@
     <p>
         <asp:Label ID="errorlbl" runat="server"></asp:Label>
     </p>
-<p>
-    </p>
-    <p>
-    </p>
-<span class="auto-style2">Add Member to Section:<br />
+   <br />
+<span class="auto-style2"><strong>Add Member to Section</strong><br />
 </span>
+    <br />
 <p>
     Member ID:&nbsp;&nbsp;<asp:TextBox ID="MemberIdTextBox" runat="server"></asp:TextBox>
 &nbsp;<asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KarateSchoolConnectionString %>" SelectCommand="SELECT * FROM [Member]"></asp:SqlDataSource>
