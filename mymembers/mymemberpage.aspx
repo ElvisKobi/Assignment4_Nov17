@@ -3,14 +3,13 @@
     <p>
         <table style="width:100%;">
             <tr>
-                <td style="width: 775px">Hi,
-                    <asp:LoginName ID="LoginName1" runat="server" />
-&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <td style="width: 775px">Hi,&nbsp;
+                    <asp:Label ID="fnameLabel" runat="server" Text="FristName"></asp:Label>
+&nbsp;&nbsp;
+                    <asp:Label ID="lnameLabel" runat="server" Text="LastName"></asp:Label>
                 </td>
                 <td>
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
-                </td>
+                    &nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -20,7 +19,18 @@
             </tr>
             <tr>
                 <td style="width: 775px">
-                    <asp:GridView ID="GridView1" runat="server">
+                    <asp:GridView ID="resultGridView" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <AlternatingRowStyle BackColor="White" />
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
                 </td>
                 <td>&nbsp;</td>

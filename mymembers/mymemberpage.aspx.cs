@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,34 +11,57 @@ namespace Assignment4_Nov17.mymembers
 {
     public partial class mymemberpage : System.Web.UI.Page
     {
-        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\elvis\\OneDrive\\Desktop\\CSCI 213 Project\\Assignment4_Nov17\\App_Data\\KarateSchool.mdf\";Integrated Security=True;Connect Timeout=30";
+        string conn = ConnectionString.conn;
         KarateDataContext dbcon;
 
-        int myMemberID;
-        public string myMemberUserName;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //  myMemberUserName=User.Identity.Name;
-
-            myMemberUserName = "user1";
-
+            //create database connection
             dbcon = new KarateDataContext(conn);
 
+            //TODO -- get MemberID from session
+            int memberID =Convert.ToInt32( HttpContext.Current.Session["userID"]);
 
-            //search for Member ID
-            NetUser mymem=(from x in dbcon.NetUsers
-                          where x.UserName == myMemberUserName
+            //find member in table
+            var member = (from x in dbcon.Members
+                          where x.Member_UserID == memberID
                           select x).First();
 
-            myMemberID=mymem.UserID; 
+            string fname = member.MemberFirstName;
+            string lname = member.MemberLastName;
+
+            //set label to name
+            fnameLabel.Text = fname;
+            lnameLabel.Text = lname;
+
+            //Fill GridView
+            using (SqlConnection dbconn = new SqlConnection(conn))
+            {
+                string query = "select SectionName, InstructorFirstName, InstructorLastName, " +
+                    "SectionStartDate, SectionFee from Section join Instructor on Instructor_ID = InstructorID " +
+                    "where Member_ID = " + memberID.ToString();
+
+                //define the SqlCommand object
+                SqlCommand cmd = new SqlCommand(query, dbconn);
 
 
-          var result= from x in dbcon.Members
-                      where x.Member_UserID == myMemberID
-                      select x;
+                //set the SqlDataAdapter object
+                SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
 
-            GridView1.DataSource = result;
-            GridView1.DataBind();
+                //define dataset
+                DataSet ds = new DataSet();
+
+                //fill dataset with query results
+                dAdapter.Fill(ds);
+
+                //set the DataGridView control's data source/data table
+                resultGridView.DataSource = ds.Tables[0];
+
+                resultGridView.DataBind();
+
+                //close connection
+                dbconn.Close();
+            }
 
         }
     }
